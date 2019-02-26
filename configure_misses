@@ -1,0 +1,42 @@
+Configure miss: varargs.h
+Configure miss: acos
+Configure miss: fpclassify
+Configure miss: whether isfinite is broken
+Configure miss: __tm_gmtoff in struct tm
+Configure miss: _NL_TIME_WEEK_1STDAY
+Configure miss: if ctime_r need special care to act posixly correct
+Configure miss: do we need malloc/malloc.h
+Configure miss: dbi/dbi.h usability
+Configure miss: dbi/dbi.h presence
+Configure miss: dbi/dbi.h
+Configure miss: rados/librados.h usability
+Configure miss: rados/librados.h presence
+Configure miss: rados/librados.h
+Configure miss: tcpd.h usability
+Configure miss: tcpd.h presence
+Configure miss: tcpd.h
+Configure miss: glib.h usability
+Configure miss: glib.h presence
+Configure miss: glib.h
+Configure miss: whether we need to include gthreads for g_thread_init
+Configure miss: pango/pango.h usability
+Configure miss: pango/pango.h presence
+Configure miss: pango/pango.h
+Configure miss: libxml/parser.h usability
+Configure miss: libxml/parser.h presence
+Configure miss: libxml/parser.h
+Configure miss: lua53/lua.h usability
+Configure miss: lua53/lua.h presence
+Configure miss: lua53/lua.h
+Configure miss: lua5.3/lua.h usability
+Configure miss: lua5.3/lua.h presence
+Configure miss: lua5.3/lua.h
+Configure miss: library containing lua_call
+Configure miss: tclConfig.sh in /usr/lib
+Configure miss: tclConfig.sh in /usr/lib64
+Configure miss: tclConfig.sh in /usr/local/lib
+Configure miss: tclConfig.sh in /usr/lib/tcl8.4
+Configure miss: tclConfig.sh in /usr/lib/tcl8.3
+Configure miss: headers required to compile python extensions
+Configure miss: gnroff
+Configure miss: MinGW-w64 build

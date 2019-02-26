@@ -1,0 +1,9 @@
+1.7.1
+groff
+libxml2-dev
+lua-dev
+pcre-dev
+pkgconfig(systemd)
+python3-dev
+ruby
+systemd-dev
