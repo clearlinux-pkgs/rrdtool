@@ -4,10 +4,10 @@
 #
 Name     : rrdtool
 Version  : 1.7.1
-Release  : 2
+Release  : 3
 URL      : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.1.tar.gz
 Source0  : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.1.tar.gz
-Summary  : Round Robin Database Tool to store and display time-series data
+Summary  : Data logging and graphing application
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ LGPL-2.1
 Requires: rrdtool-bin = %{version}-%{release}
@@ -22,6 +22,7 @@ BuildRequires : automake-dev
 BuildRequires : buildreq-cpan
 BuildRequires : buildreq-distutils3
 BuildRequires : gettext-bin
+BuildRequires : glib-dev
 BuildRequires : groff
 BuildRequires : libtool
 BuildRequires : libtool-dev
@@ -55,7 +56,6 @@ Summary: bin components for the rrdtool package.
 Group: Binaries
 Requires: rrdtool-data = %{version}-%{release}
 Requires: rrdtool-license = %{version}-%{release}
-Requires: rrdtool-man = %{version}-%{release}
 Requires: rrdtool-services = %{version}-%{release}
 
 %description bin
@@ -77,6 +77,7 @@ Requires: rrdtool-lib = %{version}-%{release}
 Requires: rrdtool-bin = %{version}-%{release}
 Requires: rrdtool-data = %{version}-%{release}
 Provides: rrdtool-devel = %{version}-%{release}
+Requires: rrdtool = %{version}-%{release}
 
 %description dev
 dev components for the rrdtool package.
@@ -142,8 +143,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551203119
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1555800121
 %reconfigure --disable-static
 make  %{?_smp_mflags}
 
@@ -155,7 +155,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1551203119
+export SOURCE_DATE_EPOCH=1555800121
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rrdtool
 cp LICENSE %{buildroot}/usr/share/package-licenses/rrdtool/LICENSE
@@ -165,11 +165,11 @@ cp bindings/python/COPYING %{buildroot}/usr/share/package-licenses/rrdtool/bindi
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl/5.28.1/RRDp.pm
-/usr/lib/perl/5.28.1/x86_64-linux-thread-multi/RRDs.pm
-/usr/lib/perl/5.28.1/x86_64-linux-thread-multi/auto/RRDp/.packlist
-/usr/lib/perl/5.28.1/x86_64-linux-thread-multi/auto/RRDs/.packlist
-/usr/lib/perl/5.28.1/x86_64-linux-thread-multi/perllocal.pod
+/usr/lib/perl/5.28.2/RRDp.pm
+/usr/lib/perl/5.28.2/x86_64-linux-thread-multi/RRDs.pm
+/usr/lib/perl/5.28.2/x86_64-linux-thread-multi/auto/RRDp/.packlist
+/usr/lib/perl/5.28.2/x86_64-linux-thread-multi/auto/RRDs/.packlist
+/usr/lib/perl/5.28.2/x86_64-linux-thread-multi/perllocal.pod
 
 %files bin
 %defattr(-,root,root,-)
@@ -209,7 +209,7 @@ cp bindings/python/COPYING %{buildroot}/usr/share/package-licenses/rrdtool/bindi
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl/5.28.1/x86_64-linux-thread-multi/auto/RRDs/RRDs.so
+/usr/lib/perl/5.28.2/x86_64-linux-thread-multi/auto/RRDs/RRDs.so
 /usr/lib64/librrd.so.8
 /usr/lib64/librrd.so.8.2.0
 
