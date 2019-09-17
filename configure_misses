@@ -31,7 +31,6 @@ Configure miss: lua53/lua.h
 Configure miss: lua5.3/lua.h usability
 Configure miss: lua5.3/lua.h presence
 Configure miss: lua5.3/lua.h
-Configure miss: library containing lua_call
 Configure miss: tclConfig.sh in /usr/lib
 Configure miss: tclConfig.sh in /usr/lib64
 Configure miss: tclConfig.sh in /usr/local/lib
