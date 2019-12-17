@@ -36,6 +36,5 @@ Configure miss: tclConfig.sh in /usr/lib64
 Configure miss: tclConfig.sh in /usr/local/lib
 Configure miss: tclConfig.sh in /usr/lib/tcl8.4
 Configure miss: tclConfig.sh in /usr/lib/tcl8.3
-Configure miss: headers required to compile python extensions
 Configure miss: gnroff
 Configure miss: MinGW-w64 build

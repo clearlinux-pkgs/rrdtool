@@ -4,7 +4,7 @@
 #
 Name     : rrdtool
 Version  : 1.7.2
-Release  : 4
+Release  : 5
 URL      : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Source0  : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Summary  : Round Robin Database Tool to store and display time-series data
@@ -16,11 +16,14 @@ Requires: rrdtool-lib = %{version}-%{release}
 Requires: rrdtool-license = %{version}-%{release}
 Requires: rrdtool-locales = %{version}-%{release}
 Requires: rrdtool-man = %{version}-%{release}
+Requires: rrdtool-python = %{version}-%{release}
+Requires: rrdtool-python3 = %{version}-%{release}
 Requires: rrdtool-services = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : buildreq-distutils3
 BuildRequires : glib-dev
 BuildRequires : groff
+BuildRequires : libxml2-dev
 BuildRequires : lua-dev
 BuildRequires : pcre-dev
 BuildRequires : pkgconfig(glib-2.0)
@@ -117,6 +120,24 @@ Group: Default
 man components for the rrdtool package.
 
 
+%package python
+Summary: python components for the rrdtool package.
+Group: Default
+Requires: rrdtool-python3 = %{version}-%{release}
+
+%description python
+python components for the rrdtool package.
+
+
+%package python3
+Summary: python3 components for the rrdtool package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the rrdtool package.
+
+
 %package services
 Summary: services components for the rrdtool package.
 Group: Systemd services
@@ -127,13 +148,14 @@ services components for the rrdtool package.
 
 %prep
 %setup -q -n rrdtool-1.7.2
+cd %{_builddir}/rrdtool-1.7.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568747328
+export SOURCE_DATE_EPOCH=1576565970
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -150,11 +172,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1568747328
+export SOURCE_DATE_EPOCH=1576565970
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rrdtool
-cp LICENSE %{buildroot}/usr/share/package-licenses/rrdtool/LICENSE
-cp bindings/python/COPYING %{buildroot}/usr/share/package-licenses/rrdtool/bindings_python_COPYING
+cp %{_builddir}/rrdtool-1.7.2/LICENSE %{buildroot}/usr/share/package-licenses/rrdtool/db95910cb27890d60e596e4c622fc3eeba6693fa
+cp %{_builddir}/rrdtool-1.7.2/bindings/python/COPYING %{buildroot}/usr/share/package-licenses/rrdtool/9a647436aa2324c4cb849c6f3d31c392ed50d9bd
 %make_install
 %find_lang rrdtool
 
@@ -215,8 +237,8 @@ cp bindings/python/COPYING %{buildroot}/usr/share/package-licenses/rrdtool/bindi
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/rrdtool/LICENSE
-/usr/share/package-licenses/rrdtool/bindings_python_COPYING
+/usr/share/package-licenses/rrdtool/9a647436aa2324c4cb849c6f3d31c392ed50d9bd
+/usr/share/package-licenses/rrdtool/db95910cb27890d60e596e4c622fc3eeba6693fa
 
 %files man
 %defattr(0644,root,root,0755)
@@ -251,6 +273,13 @@ cp bindings/python/COPYING %{buildroot}/usr/share/package-licenses/rrdtool/bindi
 /usr/share/man/man1/rrdtutorial.1
 /usr/share/man/man1/rrdupdate.1
 /usr/share/man/man1/rrdxport.1
+
+%files python
+%defattr(-,root,root,-)
+
+%files python3
+%defattr(-,root,root,-)
+/usr/lib/python3*/*
 
 %files services
 %defattr(-,root,root,-)
