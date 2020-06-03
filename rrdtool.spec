@@ -4,7 +4,7 @@
 #
 Name     : rrdtool
 Version  : 1.7.2
-Release  : 8
+Release  : 9
 URL      : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Source0  : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Summary  : Round Robin Database Tool to store and display time-series data
@@ -156,7 +156,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586984530
+export SOURCE_DATE_EPOCH=1591226311
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -173,7 +173,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1586984530
+export SOURCE_DATE_EPOCH=1591226311
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rrdtool
 cp %{_builddir}/rrdtool-1.7.2/LICENSE %{buildroot}/usr/share/package-licenses/rrdtool/db95910cb27890d60e596e4c622fc3eeba6693fa
@@ -183,11 +183,11 @@ cp %{_builddir}/rrdtool-1.7.2/bindings/python/COPYING %{buildroot}/usr/share/pac
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl/5.30.2/RRDp.pm
-/usr/lib/perl/5.30.2/x86_64-linux-thread-multi/RRDs.pm
-/usr/lib/perl/5.30.2/x86_64-linux-thread-multi/auto/RRDp/.packlist
-/usr/lib/perl/5.30.2/x86_64-linux-thread-multi/auto/RRDs/.packlist
-/usr/lib/perl/5.30.2/x86_64-linux-thread-multi/perllocal.pod
+/usr/lib/perl/5.30.3/RRDp.pm
+/usr/lib/perl/5.30.3/x86_64-linux-thread-multi/RRDs.pm
+/usr/lib/perl/5.30.3/x86_64-linux-thread-multi/auto/RRDp/.packlist
+/usr/lib/perl/5.30.3/x86_64-linux-thread-multi/auto/RRDs/.packlist
+/usr/lib/perl/5.30.3/x86_64-linux-thread-multi/perllocal.pod
 
 %files bin
 %defattr(-,root,root,-)
@@ -229,7 +229,7 @@ cp %{_builddir}/rrdtool-1.7.2/bindings/python/COPYING %{buildroot}/usr/share/pac
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl/5.30.2/x86_64-linux-thread-multi/auto/RRDs/RRDs.so
+/usr/lib/perl/5.30.3/x86_64-linux-thread-multi/auto/RRDs/RRDs.so
 /usr/lib64/librrd.so.8
 /usr/lib64/librrd.so.8.2.1
 /usr/lib64/lua/5.3/rrd.so
