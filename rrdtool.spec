@@ -4,7 +4,7 @@
 #
 Name     : rrdtool
 Version  : 1.7.2
-Release  : 10
+Release  : 11
 URL      : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Source0  : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Summary  : Round Robin Database Tool to store and display time-series data
@@ -156,7 +156,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591226311
+export SOURCE_DATE_EPOCH=1608055078
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -170,10 +170,10 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check || :
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1591226311
+export SOURCE_DATE_EPOCH=1608055078
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rrdtool
 cp %{_builddir}/rrdtool-1.7.2/LICENSE %{buildroot}/usr/share/package-licenses/rrdtool/db95910cb27890d60e596e4c622fc3eeba6693fa
