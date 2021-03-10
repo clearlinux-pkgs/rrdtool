@@ -26,12 +26,12 @@ Configure miss: pango/pango.h
 Configure miss: libxml/parser.h usability
 Configure miss: libxml/parser.h presence
 Configure miss: libxml/parser.h
-Configure miss: lua53/lua.h usability
-Configure miss: lua53/lua.h presence
-Configure miss: lua53/lua.h
-Configure miss: lua5.3/lua.h usability
-Configure miss: lua5.3/lua.h presence
-Configure miss: lua5.3/lua.h
+Configure miss: lua54/lua.h usability
+Configure miss: lua54/lua.h presence
+Configure miss: lua54/lua.h
+Configure miss: lua5.4/lua.h usability
+Configure miss: lua5.4/lua.h presence
+Configure miss: lua5.4/lua.h
 Configure miss: tclConfig.sh in /usr/lib
 Configure miss: tclConfig.sh in /usr/lib64
 Configure miss: tclConfig.sh in /usr/local/lib

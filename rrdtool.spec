@@ -4,7 +4,7 @@
 #
 Name     : rrdtool
 Version  : 1.7.2
-Release  : 13
+Release  : 14
 URL      : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Source0  : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Summary  : Round Robin Database Tool to store and display time-series data
@@ -156,7 +156,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1608055466
+export SOURCE_DATE_EPOCH=1615417742
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -173,7 +173,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1608055466
+export SOURCE_DATE_EPOCH=1615417742
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rrdtool
 cp %{_builddir}/rrdtool-1.7.2/LICENSE %{buildroot}/usr/share/package-licenses/rrdtool/db95910cb27890d60e596e4c622fc3eeba6693fa
@@ -232,9 +232,9 @@ cp %{_builddir}/rrdtool-1.7.2/bindings/python/COPYING %{buildroot}/usr/share/pac
 /usr/lib/perl/5.30.3/x86_64-linux-thread-multi/auto/RRDs/RRDs.so
 /usr/lib64/librrd.so.8
 /usr/lib64/librrd.so.8.2.1
-/usr/lib64/lua/5.3/rrd.so
-/usr/lib64/lua/5.3/rrd.so.0
-/usr/lib64/lua/5.3/rrd.so.0.0.0
+/usr/lib64/lua/5.4/rrd.so
+/usr/lib64/lua/5.4/rrd.so.0
+/usr/lib64/lua/5.4/rrd.so.0.0.0
 
 %files license
 %defattr(0644,root,root,0755)
