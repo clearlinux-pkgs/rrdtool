@@ -4,7 +4,7 @@
 #
 Name     : rrdtool
 Version  : 1.7.2
-Release  : 15
+Release  : 16
 URL      : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Source0  : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Summary  : Round Robin Database Tool to store and display time-series data
@@ -16,17 +16,25 @@ Requires: rrdtool-lib = %{version}-%{release}
 Requires: rrdtool-license = %{version}-%{release}
 Requires: rrdtool-locales = %{version}-%{release}
 Requires: rrdtool-man = %{version}-%{release}
+Requires: rrdtool-perl = %{version}-%{release}
 Requires: rrdtool-python = %{version}-%{release}
 Requires: rrdtool-python3 = %{version}-%{release}
 Requires: rrdtool-services = %{version}-%{release}
+BuildRequires : automake
+BuildRequires : automake-dev
 BuildRequires : bc
 BuildRequires : buildreq-cpan
 BuildRequires : buildreq-distutils3
+BuildRequires : gettext-bin
 BuildRequires : glib-dev
 BuildRequires : groff
+BuildRequires : libtool
+BuildRequires : libtool-dev
 BuildRequires : libxml2-dev
 BuildRequires : lua-dev
+BuildRequires : m4
 BuildRequires : pcre-dev
+BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(libpng)
@@ -36,6 +44,7 @@ BuildRequires : pkgconfig(systemd)
 BuildRequires : python3-dev
 BuildRequires : ruby
 BuildRequires : systemd-dev
+Patch1: 0001-Save-value-specified-by-enable-perl-site-install.patch
 
 %description
 RRD is the Acronym for Round Robin Database. RRD is a system to store and
@@ -121,6 +130,15 @@ Group: Default
 man components for the rrdtool package.
 
 
+%package perl
+Summary: perl components for the rrdtool package.
+Group: Default
+Requires: rrdtool = %{version}-%{release}
+
+%description perl
+perl components for the rrdtool package.
+
+
 %package python
 Summary: python components for the rrdtool package.
 Group: Default
@@ -150,19 +168,20 @@ services components for the rrdtool package.
 %prep
 %setup -q -n rrdtool-1.7.2
 cd %{_builddir}/rrdtool-1.7.2
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1616003194
+export SOURCE_DATE_EPOCH=1616111361
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
 export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
-%configure --disable-static
+%reconfigure --disable-static --enable-perl-site-install="PREFIX=/usr INSTALL_BASE= LIB=$(perl -V::installvendorlib: | sed "s|'\(.*\)'|\1|")"
 make  %{?_smp_mflags}
 
 %check
@@ -173,21 +192,22 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1616003194
+export SOURCE_DATE_EPOCH=1616111361
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rrdtool
 cp %{_builddir}/rrdtool-1.7.2/LICENSE %{buildroot}/usr/share/package-licenses/rrdtool/db95910cb27890d60e596e4c622fc3eeba6693fa
 cp %{_builddir}/rrdtool-1.7.2/bindings/python/COPYING %{buildroot}/usr/share/package-licenses/rrdtool/9a647436aa2324c4cb849c6f3d31c392ed50d9bd
 %make_install
 %find_lang rrdtool
+## install_append content
+find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
+find %{buildroot} -type f -name perllocal.pod -exec rm -f {} ';'
+find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
+find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
+## install_append end
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl/5.32.1/RRDp.pm
-/usr/lib/perl/5.32.1/x86_64-linux-thread-multi/RRDs.pm
-/usr/lib/perl/5.32.1/x86_64-linux-thread-multi/auto/RRDp/.packlist
-/usr/lib/perl/5.32.1/x86_64-linux-thread-multi/auto/RRDs/.packlist
-/usr/lib/perl/5.32.1/x86_64-linux-thread-multi/perllocal.pod
 
 %files bin
 %defattr(-,root,root,-)
@@ -229,7 +249,6 @@ cp %{_builddir}/rrdtool-1.7.2/bindings/python/COPYING %{buildroot}/usr/share/pac
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl/5.32.1/x86_64-linux-thread-multi/auto/RRDs/RRDs.so
 /usr/lib64/librrd.so.8
 /usr/lib64/librrd.so.8.2.1
 /usr/lib64/lua/5.4/rrd.so
@@ -274,6 +293,12 @@ cp %{_builddir}/rrdtool-1.7.2/bindings/python/COPYING %{buildroot}/usr/share/pac
 /usr/share/man/man1/rrdtutorial.1
 /usr/share/man/man1/rrdupdate.1
 /usr/share/man/man1/rrdxport.1
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.32.1/RRDp.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/RRDs.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/RRDs/RRDs.so
 
 %files python
 %defattr(-,root,root,-)

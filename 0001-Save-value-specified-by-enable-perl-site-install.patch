@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Patrick McCarty <patrick.mccarty@intel.com>
+Date: Thu, 18 Mar 2021 22:29:45 +0000
+Subject: [PATCH] Save value specified by --enable-perl-site-install
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 532920e..3683762 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -701,7 +701,7 @@ PERL_MAKE_OPTIONS="PREFIX=$langpref INSTALL_BASE= LIB=$langpref/lib/perl/$PERL_V
+ dnl pass additional perl options when generating Makefile from Makefile.PL
+ AC_ARG_ENABLE(perl-site-install,
+ AS_HELP_STRING([--enable-perl-site-install],[by default the rrdtool perl modules are installed together with rrdtool in $prefix/lib/perl. You have to put a 'use lib qw($prefix/lib/perl)' into your scripts when you want to use them. When you set this option the perl modules will get installed wherever your perl setup thinks it is best.]),
+-[PERL_MAKE_OPTIONS=],[])
++[PERL_MAKE_OPTIONS="$enableval"],[])
+ 
+ if test ! -z "$PERLCC"; then
+    PERL_MAKE_OPTIONS="$PERL_MAKE_OPTIONS CC=$PERLCC"

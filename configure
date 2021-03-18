@@ -1,0 +1,1 @@
+--enable-perl-site-install="PREFIX=/usr INSTALL_BASE= LIB=$(perl -V::installvendorlib: | sed "s|'\(.*\)'|\1|")"
