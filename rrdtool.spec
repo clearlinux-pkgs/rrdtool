@@ -4,7 +4,7 @@
 #
 Name     : rrdtool
 Version  : 1.7.2
-Release  : 29
+Release  : 30
 URL      : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Source0  : https://oss.oetiker.ch/rrdtool/pub/rrdtool-1.7.2.tar.gz
 Summary  : Round Robin Database Tool to store and display time-series data
@@ -16,7 +16,6 @@ Requires: rrdtool-lib = %{version}-%{release}
 Requires: rrdtool-license = %{version}-%{release}
 Requires: rrdtool-locales = %{version}-%{release}
 Requires: rrdtool-man = %{version}-%{release}
-Requires: rrdtool-perl = %{version}-%{release}
 Requires: rrdtool-python = %{version}-%{release}
 Requires: rrdtool-python3 = %{version}-%{release}
 Requires: rrdtool-services = %{version}-%{release}
@@ -130,15 +129,6 @@ Group: Default
 man components for the rrdtool package.
 
 
-%package perl
-Summary: perl components for the rrdtool package.
-Group: Default
-Requires: rrdtool = %{version}-%{release}
-
-%description perl
-perl components for the rrdtool package.
-
-
 %package python
 Summary: python components for the rrdtool package.
 Group: Default
@@ -175,7 +165,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621715616
+export SOURCE_DATE_EPOCH=1635528233
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -192,7 +182,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1621715616
+export SOURCE_DATE_EPOCH=1635528233
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rrdtool
 cp %{_builddir}/rrdtool-1.7.2/LICENSE %{buildroot}/usr/share/package-licenses/rrdtool/db95910cb27890d60e596e4c622fc3eeba6693fa
@@ -239,8 +229,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/include/rrd_format.h
 /usr/lib64/librrd.so
 /usr/lib64/pkgconfig/librrd.pc
-/usr/share/man/man3/RRDp.3
-/usr/share/man/man3/RRDs.3
 /usr/share/man/man3/librrd.3
 
 %files doc
@@ -293,12 +281,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man1/rrdtutorial.1
 /usr/share/man/man1/rrdupdate.1
 /usr/share/man/man1/rrdxport.1
-
-%files perl
-%defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/RRDp.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/RRDs.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/RRDs/RRDs.so
 
 %files python
 %defattr(-,root,root,-)
