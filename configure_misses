@@ -9,7 +9,6 @@ Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: glib.h
 Configure miss: gnroff
 Configure miss: if ctime_r need special care to act posixly correct
-Configure miss: if msync with MS_ASYNC updates the files mtime
 Configure miss: libxml/parser.h
 Configure miss: lua5.4/lua.h
 Configure miss: lua54/lua.h
@@ -24,3 +23,4 @@ Configure miss: tcpd.h
 Configure miss: varargs.h
 Configure miss: whether isfinite is broken
 Configure miss: whether we need to include gthreads for g_thread_init
+Configure miss: x86_64-generic-linux-gnu-file
