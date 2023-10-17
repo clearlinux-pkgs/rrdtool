@@ -65,6 +65,7 @@ librrd.so.8:rrd_strversion
 librrd.so.8:rrd_tell
 librrd.so.8:rrd_test_error
 librrd.so.8:rrd_tune
+librrd.so.8:rrd_tune_r
 librrd.so.8:rrd_update
 librrd.so.8:rrd_update_r
 librrd.so.8:rrd_update_v
@@ -81,11 +82,15 @@ librrd.so.8:rrdc_fetch
 librrd.so.8:rrdc_first
 librrd.so.8:rrdc_flush
 librrd.so.8:rrdc_flush_if_daemon
+librrd.so.8:rrdc_flushall
+librrd.so.8:rrdc_flushall_if_daemon
 librrd.so.8:rrdc_forget
 librrd.so.8:rrdc_info
 librrd.so.8:rrdc_is_any_connected
 librrd.so.8:rrdc_is_connected
 librrd.so.8:rrdc_last
+librrd.so.8:rrdc_list
+librrd.so.8:rrdc_ping
 librrd.so.8:rrdc_stats_free
 librrd.so.8:rrdc_stats_get
 librrd.so.8:rrdc_update

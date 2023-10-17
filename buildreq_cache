@@ -1,10 +1,6 @@
-1.7.2
+1.8.0
 glib-dev
 groff
-libxml2-dev
 lua-dev
-pcre-dev
-pkgconfig(systemd)
 python3-dev
 ruby
-systemd-dev
