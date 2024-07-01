@@ -7,7 +7,7 @@
 #
 Name     : rrdtool
 Version  : 1.8.0
-Release  : 38
+Release  : 39
 URL      : https://github.com/oetiker/rrdtool-1.x/releases/download/v1.8.0/rrdtool-1.8.0.tar.gz
 Source0  : https://github.com/oetiker/rrdtool-1.x/releases/download/v1.8.0/rrdtool-1.8.0.tar.gz
 Summary  : Round Robin Database Tool to store and display time-series data
