@@ -7,7 +7,7 @@
 #
 Name     : rrdtool
 Version  : b39df920f0ff31a49460d9872006a2579ee4c7ed
-Release  : 41
+Release  : 42
 URL      : https://github.com/oetiker/rrdtool-1.x/archive/b39df920f0ff31a49460d9872006a2579ee4c7ed.tar.gz
 Source0  : https://github.com/oetiker/rrdtool-1.x/archive/b39df920f0ff31a49460d9872006a2579ee4c7ed.tar.gz
 Summary  : Round Robin Database Tool to store and display time-series data
